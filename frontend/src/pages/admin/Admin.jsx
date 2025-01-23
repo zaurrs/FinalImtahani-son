@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Table from 'react-bootstrap/Table';
 import { useDispatch, useSelector } from 'react-redux';
-import { addData, deleteData, getData } from '../../redux/features/productSlice';
+import { addData, deleteData, getData, searchInput, sortHigh, sortLow } from '../../redux/features/productSlice';
 import { useFormik } from 'formik';
 import { schema } from '../../schema/ProductSchema';
 import "./Admin.scss"
@@ -17,7 +17,7 @@ const Admin = () => {
   }, [dispatch])
 
 
- 
+
 
   const { handleChange, handleSubmit, resetForm, values, errors } = useFormik({
     initialValues: {
@@ -50,7 +50,7 @@ const Admin = () => {
       }
       {
         modal ? (
-          <form action="" onSubmit={() =>  handleSubmit()} className='adminForm'>
+          <form action="" onSubmit={() => handleSubmit()} className='adminForm'>
             <div className='inp'>
               <label htmlFor="image">Image</label>
               <input placeholder='Image...' type="url" name="image" id="image" onChange={handleChange} defaultValue={values.image} />
@@ -85,6 +85,11 @@ const Admin = () => {
       }
 
       <button onClick={() => openModal()}>Create</button>
+      <br />
+      <button onClick={() => { dispatch(sortLow()) }}>Low to High</button>
+      <input type="text" onChange={(e) => dispatch(searchInput(e.target.value))} />
+      <button onClick={() => { dispatch(sortHigh()) }}>High to Low</button>
+
       <Table striped bordered hover>
         <thead>
           <tr>

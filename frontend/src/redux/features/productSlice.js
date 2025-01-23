@@ -3,6 +3,7 @@ import axios from 'axios'
 
 const initialState = {
     products: [],
+    allProducts: []
 }
 const URL = "http://localhost:5000/api/products"
 
@@ -29,10 +30,22 @@ export const deleteData = createAsyncThunk("deleteData", async (id) => {
 export const productSlice = createSlice({
     name: 'product',
     initialState,
-    reducers: {},
+    reducers: {
+        sortLow: (state) => {
+            state.products = state.products.sort((a, b) => a.price - b.price)
+        },
+        sortHigh: (state) => {
+            state.products = state.products.sort((a, b) => b.price - a.price)
+        },
+        searchInput: (state, action) => {
+            state.products = state.allProducts.filter((item) => item.name.toLowerCase().includes(action.payload.toLowerCase().trim()))
+        }
+    },
+
     extraReducers: (builder) => {
         builder.addCase(getData.fulfilled, (state, action) => {
             state.products = action.payload
+            state.allProducts = action.payload
         }),
             builder.addCase(addData.fulfilled, (state, action) => {
                 state.products.push(action.payload)
@@ -44,6 +57,6 @@ export const productSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { } = productSlice.actions
+export const { sortLow, sortHigh, searchInput } = productSlice.actions
 
 export default productSlice.reducer
