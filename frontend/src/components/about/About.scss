@@ -1,0 +1,28 @@
+.container{
+    .title{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 50px;
+    }
+  .cardsa{
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    .cardAbout{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: rgb(213, 213, 213);
+        span{
+            font-size: 70px;
+            color: red;
+
+        }
+        p{
+            text-align: center;
+        }
+    }
+  }
+}

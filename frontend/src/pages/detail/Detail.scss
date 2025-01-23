@@ -1,0 +1,25 @@
+.container{
+    .detailImg{
+        height: 500px;
+        img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .detail{
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-direction: column;
+        button{
+            background-color: white;
+            border: 1px solid blue;
+            transition: all 0.5s;
+            padding: 5px;
+            &:hover{
+                background-color: blue;
+                color: white;
+            }
+        }
+    }
+}

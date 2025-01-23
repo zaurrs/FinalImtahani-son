@@ -1,0 +1,55 @@
+.hero{
+ 
+    .heros{
+        margin: 100px;
+        .heros2{
+            img{
+                width: 500px;
+                height: 500px;
+            }
+
+        }
+        .heros1{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            gap: 30px;
+            .text{
+                h1{
+                    font-size: 60px;
+                }
+            }
+            button{
+                width: 200px;
+                background-color: white;
+                color: black;
+                border: 1px solid red;
+                padding: 10px;
+                transition: all 0.3s;
+                &:hover{
+                    background-color: red;
+                    color: white;
+                }
+            }
+    }
+    }
+
+}
+
+@media (max-width:705px){
+    .heros2{
+        img{
+            width: 300px !important;
+            height: 300px !important;
+        }
+    }
+}
+@media (max-width:530px){
+    .heros1{
+       .text{
+        h1{
+            font-size: 30px !important;
+        }
+       }
+    }
+}
